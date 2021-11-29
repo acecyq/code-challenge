@@ -1,29 +1,62 @@
 <html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Fancy Form</title>
 
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Fancy Form</title>
+    <!-- You may add more stuff here -->
+    <link href="style.css" rel="stylesheet" />
+  </head>
 
-  <!-- You may add more stuff here -->
-  <link href="style.css" rel="stylesheet" />
-</head>
+  <body>
+    <!-- You may reorganise the whole HTML, as long as your form achieves the same effect. -->
+    <div class="modal hidden">
+      <div class="lds-ellipsis">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
 
-<body>
+    <div class="notification hidden">
+      <p>&#10004;&nbsp;&nbsp;Form Submitted</p>
+    </div>
 
-  <!-- You may reorganise the whole HTML, as long as your form achieves the same effect. -->
-  <form onsubmit="return !1">
-    <label for="input-address">ETH Address</label>
-    <input id="input-address" />
+    <form class="form" onsubmit="return submitForm()">
+      <label for="input-address">
+        ETH Address
+        <input
+          id="input-address"
+          onkeyup="validateEthAddress(event)"
+          onchange="validateEthAddress(event)"
+        />
+        <span id="input-address-error"></span>
+      </label>
 
-    <label for="input-amount">Amount to send</label>
-    <input id="input-amount" />
+      <label for="input-amount">
+        Amount to Send
+        <input
+          type="number"
+          id="input-amount"
+          onchange="validateSendAmount(event)"
+          onkeyup="validateSendAmount(event)"
+        />
+        <span id="input-amount-error"></span>
+      </label>
 
-    <label for="input-otp">OTP Authentication</label>
-    <input type="number" id="input-otp" />
+      <label for="input-otp">
+        OTP Authentication
+        <input
+          type="number"
+          id="input-otp"
+          onchange="validateOtpAuthentication(event)"
+          onkeyup="validateOtpAuthentication(event)"
+        />
+        <span id="input-otp-error"></span>
+      </label>
 
-    <button>SEND TOKENS</button>
-  </form>
-  <script src="script.js"></script>
-</body>
-
+      <button id="submit-button">SEND TOKENS</button>
+    </form>
+    <script src="script.js"></script>
+  </body>
 </html>
